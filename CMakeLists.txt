@@ -5,6 +5,7 @@ set(PROJ_DIR CACHE PATH "path to PROJ9")
 set(SQLITE_DIR CACHE PATH "path to SQLite3")
 
 set (PROJ_INCLUDE_DIR ${PROJ_DIR}/include)
+set (SQLITE_DIR ${SQLite3_ROOT})
 find_library(
     PROJ_LIBRARY
     NAMES proj
