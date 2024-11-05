@@ -14,7 +14,8 @@ Need to set following:
 
 Example build:
 
-- Go to where you want to host the source, build and output: cd Build
+- Go to where you want to host the source, build and output
 - Clone the repository: git clone https://github.com/waynegm/WMPlugin_Deps.git
-- Configure and generate: cmake -S WMPlugin_Deps -B bld/WMPlugin_Deps -G "Ninja Multi-Config" -DCMAKE_INSTALL_PREFIX:PATH=inst/WMPlugin_Deps -DSQLite3_ROOT=...sqlite3 -DPROJ_DIR:PATH=...proj9
-- Build and install the dependencies: cmake --build bld/WMPlugin_Deps --config Release
+- Configure and generate on Unix: cmake -S WMPlugin_Deps -B WMPlugin_Deps/build -G "Ninja Multi-Config" -DCMAKE_INSTALL_PREFIX:PATH=WMPlugin_Deps/inst -DSQLite3_ROOT=...sqlite3 -DPROJ_ROOT:PATH=...proj9
+- Configure and generate on Windows: cmake -S WMPlugin_Deps -B WMPlugin_Deps/build -G "Visual Studio 17 2022" -A x64 -DCMAKE_INSTALL_PREFIX:PATH=WMPlugin_Deps/inst -DSQLite3_ROOT=...sqlite3 -DPROJ_ROOT:PATH=...proj9
+- Build and install the dependencies: cmake --build WMPlugin_Deps/build --config Release
