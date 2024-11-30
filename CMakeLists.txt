@@ -1,24 +1,42 @@
 cmake_minimum_required(VERSION 3.12)
 project(dependencies)
 
-set(PROJ_DIR CACHE PATH "path to PROJ9")
-set(SQLITE_DIR CACHE PATH "path to SQLite3")
+set(SQLite3_ROOT CACHE PATH "path to SQLite3")
+set(PROJ_ROOT CACHE PATH "path to PROJ9")
+set(TIFF_ROOT CACHE PATH "path to TIFF")
 
-set (PROJ_INCLUDE_DIR ${PROJ_DIR}/include)
-set (SQLITE_DIR ${SQLite3_ROOT})
+set (PROJ_INCLUDE_DIR ${PROJ_ROOT}/include)
 find_library(
     PROJ_LIBRARY
     NAMES proj
-    PATHS ${PROJ_DIR}/lib
+    PATHS ${PROJ_ROOT}/lib
     NO_DEFAULT_PATH
 )
 
 find_library(
     SQLite3_LIBRARY
     NAMES sqlite3
-    PATHS ${SQLITE_DIR}/lib
+    PATHS ${SQLite3_ROOT}/lib
     NO_DEFAULT_PATH
 )
+
+macro( add_cmake_args )
+
+    list( APPEND CMAKE_ARGS
+	"-DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_INSTALL_PREFIX}"
+	"-DCMAKE_PREFIX_PATH:PATH=${CMAKE_PREFIX_PATH}"
+	"-DCMAKE_INSTALL_INCLUDEDIR:PATH=${CMAKE_INSTALL_PREFIX}/include"
+	"-DCMAKE_TOOLCHAIN_FILE:PATH=${CMAKE_TOOLCHAIN_FILE}"
+	"-DCMAKE_C_COMPILER=${CMAKE_C_COMPILER}"
+	"-DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}"
+	"-DCMAKE_MAKE_PROGRAM=${CMAKE_MAKE_PROGRAM}"
+    )
+
+    if ( DEFINED CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES )
+	list( APPEND CMAKE_ARGS "-DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}" )
+    endif()
+
+endmacro(add_cmake_args)
 
 add_subdirectory(libtiff)
 add_subdirectory(geotiff)

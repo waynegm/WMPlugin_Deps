@@ -5,19 +5,15 @@ include(ExternalProject)
 find_library(
     SQLite3_LIBRARY
     NAMES sqlite3
-    PATHS ${SQLITE_DIR}/lib
+    PATHS ${SQLite3_ROOT}/lib
     NO_DEFAULT_PATH
 )
 
+add_cmake_args()
 list(APPEND CMAKE_ARGS
-    "-DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_INSTALL_PREFIX}"
-    "-DCMAKE_PREFIX_PATH:PATH=${CMAKE_PREFIX_PATH}"
-    "-DCMAKE_INSTALL_INCLUDEDIR:PATH=${CMAKE_INSTALL_PREFIX}/include"
-    "-DCMAKE_TOOLCHAIN_FILE:PATH=${CMAKE_TOOLCHAIN_FILE}"
-    "-DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}"
     "-DBUILD_SHARED_LIBS:option=ON"
     "-DBUILD_TESTING:option=OFF"
-    "-DSQLite3_INCLUDE_DIR:path=${SQLITE_DIR}/include"
+    "-DSQLite3_INCLUDE_DIR:path=${SQLite3_ROOT}/include"
     "-DSQLite3_LIBRARY:file=${SQLite3_LIBRARY}"
 )
 
