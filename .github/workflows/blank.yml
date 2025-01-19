@@ -24,9 +24,9 @@ jobs:
         shell: cmake -P {0}
         run: |
           file(DOWNLOAD "$ENV{PROJ_URL}" ./proj.zip SHOW_PROGRESS)
-          execute_process(7za x ./proj.zip)
+          execute_process(cmake -E tar x ./proj.zip)
           file(DOWNLOAD "$ENV{SQLITE_URL}" ./sqlite.zip SHOW_PROGRESS)
-          execute_process(7za x ./sqlite.zip)
+          execute_process(cmake -E tar x ./sqlite.zip)
       - name: Configure
         shell: bash
         run: |
