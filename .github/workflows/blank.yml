@@ -23,6 +23,7 @@ jobs:
       - name: Dependencies
         shell: cmake -P {0}
         run: |
+          message(STATUS "Using host CMake version: ${CMAKE_VERSION}")
           file(DOWNLOAD "$ENV{PROJ_URL}" ./proj.zip SHOW_PROGRESS)
           file(ARCHIVE_EXTRACT INPUT "./proj.zip" DESTINATION "." )
           file(DOWNLOAD "$ENV{SQLITE_URL}" ./sqlite.zip SHOW_PROGRESS)
