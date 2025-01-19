@@ -8,9 +8,9 @@ on:
 
 env:
   PROJ_URL: "https://drive.google.com/file/d/1Bs4F3Yrag_oiQ8Pn-JulG-uqdwk8wMtY/view?usp=sharing"
-  PROJ_ROOT: "inst_proj_9.5.1_vs2022"
+  PROJ_ROOT: "./inst_proj_9.5.1_vs2022"
   SQLITE_URL: "https://drive.google.com/file/d/1ieOMSBXV694Yq8alACFGX5mwdqCPxZsW/view?usp=sharing"
-  SQLITE_ROOT: "inst_sqlite_3.47.2"
+  SQLITE_ROOT: "./inst_sqlite_3.47.2"
 
 permissions:
   contents: write
