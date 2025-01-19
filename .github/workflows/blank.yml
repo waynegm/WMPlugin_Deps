@@ -7,9 +7,9 @@ on:
   workflow_dispatch:
 
 env:
-  PROJ_URL: "https://drive.google.com/file/d/1Bs4F3Yrag_oiQ8Pn-JulG-uqdwk8wMtY/view?usp=sharing"
+  PROJ_URL: "https://drive.google.com/uc?export=download&id=1Bs4F3Yrag_oiQ8Pn-JulG-uqdwk8wMtY"
   PROJ_ROOT: "./inst_proj_9.5.1_vs2022"
-  SQLITE_URL: "https://drive.google.com/file/d/1ieOMSBXV694Yq8alACFGX5mwdqCPxZsW/view?usp=sharing"
+  SQLITE_URL: "https://drive.google.com/uc?export=download&id=1ieOMSBXV694Yq8alACFGX5mwdqCPxZsW"
   SQLITE_ROOT: "./inst_sqlite_3.47.2"
 
 permissions:
@@ -40,8 +40,8 @@ jobs:
         shell: bash
         run: cmake --build build --config Release
       - name: Make archive
-        shell: bash
-        run: 7z a -tzip wmdepends_win64.zip
+        shell: cmake -P {0}
+        run: file(ARCHIVE_CREATE wmdepends_win64.zip PATHS instdir FORMAT zip )
       - name: Upload 
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
