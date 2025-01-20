@@ -8,9 +8,9 @@ on:
 
 env:
   PROJ_URL: "https://drive.google.com/uc?export=download&id=1Bs4F3Yrag_oiQ8Pn-JulG-uqdwk8wMtY"
-  PROJ_ROOT: "${{ github.workspace }}/inst_proj_9.5.1_vs2022"
+  PROJ_ROOT: "${{ github.workspace }}\inst_proj_9.5.1_vs2022"
   SQLITE_URL: "https://drive.google.com/uc?export=download&id=1ieOMSBXV694Yq8alACFGX5mwdqCPxZsW"
-  SQLITE_ROOT: "${{ github.workspace }}/inst_sqlite_3.47.2"
+  SQLITE_ROOT: "${{ github.workspace }}\inst_sqlite_3.47.2"
 
 permissions:
   contents: write
@@ -24,17 +24,16 @@ jobs:
         shell: cmake -P {0}
         run: |
           message(STATUS "Using host CMake version: ${CMAKE_VERSION}")
-          file(DOWNLOAD "$ENV{PROJ_URL}" ./proj.zip SHOW_PROGRESS)
-          file(ARCHIVE_EXTRACT INPUT "./proj.zip" DESTINATION "${{ github.workspace }}" )
-          file(DOWNLOAD "$ENV{SQLITE_URL}" ./sqlite.zip SHOW_PROGRESS)
-          file(ARCHIVE_EXTRACT INPUT "./sqlite.zip" DESTINATION "${{ github.workspace }}" )
+          file(DOWNLOAD "$ENV{PROJ_URL}" .\proj.zip SHOW_PROGRESS)
+          file(ARCHIVE_EXTRACT INPUT ".\proj.zip" DESTINATION "${{ github.workspace }}" )
+          file(DOWNLOAD "$ENV{SQLITE_URL}" .\sqlite.zip SHOW_PROGRESS)
+          file(ARCHIVE_EXTRACT INPUT ".\sqlite.zip" DESTINATION "${{ github.workspace }}" )
       - name: Configure
         shell: bash
         run: |
-          cd ${{ github.workspace }}
           mkdir build
           mkdir instdir
-          mkdir instdir/Release
+          mkdir instdir\Release
           cmake -S . -B build -G "Visual Studio 17 2022" -A x64 \
                 -DPROJ_ROOT:PATH=$ENV{PROJ_ROOT} \
                 -DSQLite3_ROOT:PATH=$ENV{SQLITE_ROOT} \
@@ -44,7 +43,7 @@ jobs:
         run: cmake --build build --config Release
       - name: Make archive
         shell: cmake -P {0}
-        run: file(ARCHIVE_CREATE wmdepends_win64.zip PATHS "${{ github.workspace }}/instdir" FORMAT zip )
+        run: file(ARCHIVE_CREATE wmdepends_win64.zip PATHS "${{ github.workspace }}\instdir" FORMAT zip )
       - name: Upload 
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
