@@ -33,11 +33,11 @@ jobs:
         run: |
           mkdir build
           mkdir instdir
-          mkdir instdir\Release
+          mkdir instdir\\Release
           cmake -S . -B build -G "Visual Studio 17 2022" -A x64 \
                 -DPROJ_ROOT:PATH=$ENV{PROJ_ROOT} \
                 -DSQLite3_ROOT:PATH=$ENV{SQLITE_ROOT} \
-                -DCMAKE_INSTALL_PREFIX:PATH="instdir/Release"
+                -DCMAKE_INSTALL_PREFIX:PATH="instdir\\Release"
       - name: Build
         shell: bash
         run: cmake --build build --config Release
