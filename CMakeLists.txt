@@ -26,3 +26,8 @@ endmacro(add_cmake_args)
 add_subdirectory(libtiff)
 add_subdirectory(geotiff)
 add_subdirectory(gpkgio)
+add_subdirectory(eigen)
+add_subdirectory(ddemidov_mba)
+add_subdirectory(jlblancoc_nanoflann)
+
+
