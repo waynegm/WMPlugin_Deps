@@ -6,7 +6,7 @@ A repository for building the dependencies of the WMPlugin OpendTect-Plugins. Cu
 - libgeotiff: support for GeoTiff extension of libtiff
 - gpkgio: simple GeoPackage file output
 - eigen3: C++ template linear algebra library
-- mba: adaptive mylti-level Bspline approximation/interpolation
+- mba: adaptive multi-level Bspline approximation/interpolation
 - nanoflann: KD trees library
 
 Need to set following:
