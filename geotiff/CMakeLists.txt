@@ -14,7 +14,7 @@ list(APPEND CMAKE_ARGS
 
 ExternalProject_Add(
      geotiff
-     URL		https://github.com/OSGeo/libgeotiff/releases/download/1.7.3/libgeotiff-1.7.3.zip
+     URL		https://github.com/OSGeo/libgeotiff/releases/download/1.7.4/libgeotiff-1.7.4.zip
      PREFIX		geotiff
      CMAKE_ARGS		"${CMAKE_ARGS}"
      DOWNLOAD_EXTRACT_TIMESTAMP	false

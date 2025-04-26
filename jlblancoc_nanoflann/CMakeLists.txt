@@ -6,7 +6,7 @@ add_cmake_args()
 
 ExternalProject_Add(
      nanoflann
-     URL		https://github.com/jlblancoc/nanoflann/archive/refs/tags/v1.7.0.zip
+     URL		https://github.com/jlblancoc/nanoflann/archive/refs/tags/v1.7.1.zip
      PREFIX		nanoflann
      CMAKE_ARGS		"${CMAKE_ARGS}"
      DOWNLOAD_EXTRACT_TIMESTAMP	false
