@@ -13,7 +13,7 @@ list(APPEND CMAKE_ARGS
 
 ExternalProject_Add(
      libtiff
-     URL		https://download.osgeo.org/libtiff/tiff-4.7.0.zip
+     URL		https://download.osgeo.org/libtiff/tiff-4.7.1.zip
      PREFIX		libtiff
      CMAKE_ARGS		"${CMAKE_ARGS}"
      DOWNLOAD_EXTRACT_TIMESTAMP	false

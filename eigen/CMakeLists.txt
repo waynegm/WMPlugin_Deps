@@ -15,7 +15,7 @@ list(APPEND CMAKE_ARGS
 
 ExternalProject_Add(
      eigen
-     URL		https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.zip
+     URL		https://gitlab.com/libeigen/eigen/-/archive/3.4.1/eigen-3.4.1.zip
      PREFIX		eigen
      CMAKE_ARGS		"${CMAKE_ARGS}"
      DOWNLOAD_EXTRACT_TIMESTAMP	false

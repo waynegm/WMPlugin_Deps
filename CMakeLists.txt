@@ -29,5 +29,7 @@ add_subdirectory(gpkgio)
 add_subdirectory(eigen)
 add_subdirectory(ddemidov_mba)
 add_subdirectory(jlblancoc_nanoflann)
+add_subdirectory(nlohmann)
+#add_subdirectory(blosc2)
 
 
